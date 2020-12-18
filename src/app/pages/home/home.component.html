@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="colums" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+    <div *ngFor="let post of posts" class="column is-4 is-offset-4">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"
+            style="background-image: url({{getPosterPic(post.postedBy)}})"> </div>
+          <mat-card-title>{{getPosterName(post.postedBy)}}</mat-card-title>
+          <mat-card-subtitle>{{calculateTime(post.time)}}</mat-card-subtitle>
+        </mat-card-header>
+        <div class=" has-text-centered">
+          <img (dblclick)="likeIt(post.time)" class="card-img" mat-card-image src="{{post.img}}">
+        </div>
+        <mat-card-content>
+          <p>{{post.caption}} </p>
+        </mat-card-content>
+        <p *ngIf="gotliks && NoOfLikes(post.time)>0 " [routerLink]="[ '/likes', post.time ]"> loved by
+          {{NoOfLikes(post.time)}} People</p>
+        <mat-card-actions>
+          <button (click)="likeIt(post.time)" style="font-size: large;" mat-icon-button>
+
+
+            <mat-icon *ngIf="isLiked(post.time)" color="warn">favorite</mat-icon>
+            <mat-icon *ngIf="!isLiked(post.time)"><i class="icon-heart icons"></i></mat-icon>
+          </button>
+          <button mat-icon-button [routerLink]="[ '/comment',post.time]">
+            <mat-icon *ngIf="NoOfcomment(post.time)>0" matBadge="{{NoOfcomment(post?.time)}}">
+              <i class="icons icon-speech"></i>
+            </mat-icon>
+            <mat-icon *ngIf="NoOfcomment(post.time)==0">
+              <i class="icons icon-speech"></i>
+            </mat-icon>
+          </button>
+          <!-- <button mat-icon-button (click)="share(post.caption,post.img)">
+            <mat-icon>share</mat-icon>
+          </button> -->
+        </mat-card-actions>
+
+
+        <!-- <div class="field">
+          <div class="control">
+            <mat-form-field class="example-full-width">
+              <mat-label>Leave a comment</mat-label>
+              <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            </mat-form-field>
+            <button mat-icon-button color="primary">
+              <mat-icon>send</mat-icon>
+            </button>
+          </div>
+        </div> -->
+
+
+      </mat-card>
+
+    </div>
+  </div>
+</div>

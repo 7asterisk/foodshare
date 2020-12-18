@@ -1,0 +1,50 @@
+<div class=" container ">
+  <div class="column">
+
+    <article class="media" *ngFor="let comment of comments">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img class="is-rounded" src="{{ getPosterPic(comment.postedBy)}}">
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{getPosterName(comment.postedBy)}}</strong>
+            <br>{{comment.comment}}<br>
+            <small> {{calculateTime(comment.time)}}</small>
+          </p>
+        </div>
+      </div>
+      <div *ngIf="comment.postedBy === uid">
+        <mat-icon (click)="deleteComment(comment.time)">delete</mat-icon>
+      </div>
+    </article>
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img class="is-rounded" src="{{posterPic}}">
+        </p>
+      </figure>
+      <div class="media-content">
+
+        <textarea class="textarea" rows="2" [(ngModel)]="caption" placeholder="Leave a comment"></textarea>
+        <br>
+        <div class="field">
+          <p class="control">
+            <button mat-raised-button color="primary" *ngIf="!uploading" (click)="post()">
+              post
+              <!-- <mat-icon>send</mat-icon> -->
+            </button>
+            <button mat-raised-button color="primary" *ngIf="uploading">
+              <mat-spinner diameter="20" style="display: inline-flex;" color="accent">
+              </mat-spinner>
+              post
+              <!-- <mat-icon>send</mat-icon> -->
+            </button>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

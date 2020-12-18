@@ -1,0 +1,26 @@
+<mat-toolbar class="navbar level">
+  <div class="level-item has-text-centered">
+    <div>
+      <button mat-icon-button>
+        <mat-icon class="example-icon" [routerLink]="[ '/' ]">
+          <i class=" icon-home icons"></i>
+        </mat-icon>
+      </button>
+    </div>
+    <div>
+      <!-- <input class="file-input" type="file" (change)="uploadFile($event)"> -->
+      <button mat-icon-button>
+        <mat-icon [routerLink]="[ '/addpost']" class="example-icon">
+          <i class=" icon-plus icons"></i>
+        </mat-icon>
+      </button>
+    </div>
+    <div>
+      <button mat-icon-button>
+        <mat-icon class="example-icon" [routerLink]="[ '/profile' ]">
+          <i class="icon-user icons"></i>
+        </mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

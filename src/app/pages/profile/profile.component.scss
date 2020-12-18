@@ -1,0 +1,48 @@
+.example-full-width {
+  width: 100%;
+}
+
+.edit-button {
+  position: absolute;
+  right: 20px;
+  //   top: 0;
+}
+
+.is-rounded {
+  height: 128px;
+  object-fit: contain;
+}
+
+
+.upload-picture {
+  position: absolute;
+  bottom: 0px;
+  left: 5px;
+  background: #fff;
+  width: 120px;
+  opacity: 0.7;
+  height: 40px;
+}
+
+.upload-picture>mat-icon {
+  font-size: xx-large;
+}
+
+.card-img {
+  height: 300px;
+  object-fit: cover;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+.menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .16);
+}

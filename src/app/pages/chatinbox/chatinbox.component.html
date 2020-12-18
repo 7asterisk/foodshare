@@ -1,0 +1,48 @@
+<mat-toolbar class="navbar is-fixed-top">
+  <mat-list>
+    <mat-list-item>
+      <span mat-list-icon class="image is-64x64">
+        <img class="is-rounded" src="{{toChatUser?.picture}}">
+      </span>
+      <div mat-line style="color: aliceblue;">{{toChatUser?.name}}</div>
+    </mat-list-item>
+  </mat-list>
+</mat-toolbar>
+
+
+<div class="msg-area" #scrollMe style="overflow-y: scroll; height: 83%;">
+  <ng-container *ngFor="let msg of chats">
+
+    <div class="message" [ngClass]="{ 'from': msg.by === tochat,
+                                          'to':   msg.by === uid }">
+      <span>
+        {{msg.msg}}
+      </span>
+    </div>
+
+  </ng-container>
+
+
+  <br>
+
+</div>
+<mat-toolbar class="navbar level">
+  <div class="level-item has-text-centered">
+    <div style="width: 100%;">
+      <form autocomplete="off" style="display:flex" (ngSubmit)="sendMsg()">
+        <div style="width: 100%;">
+          <div class="control">
+            <input class="input is-rounded is-primary is-focused" [(ngModel)]="newmsg" autocomplete="off" name=msg
+              type="text" placeholder="msg..">
+          </div>
+        </div>
+        <div>
+          <button mat-icon-button type="submit">
+            <mat-icon class="example-icon">send</mat-icon>
+          </button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-toolbar>

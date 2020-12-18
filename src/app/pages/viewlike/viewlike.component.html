@@ -1,0 +1,10 @@
+<mat-list>
+  <div mat-subheader>Liked By</div>
+  <mat-list-item *ngFor="let liked of likeBy">
+    <span mat-list-icon class="image is-64x64">
+      <img class="is-rounded" src="{{ getPosterPic(liked.likedBy)}}">
+    </span>
+    <div mat-line>{{getPosterName(liked.likedBy)}}</div>
+    <div mat-line> {{liked.time | date}} </div>
+  </mat-list-item>
+</mat-list>

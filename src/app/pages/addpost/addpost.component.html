@@ -1,0 +1,36 @@
+<br>
+<div class="container">
+  <mat-progress-bar mode="indeterminate" *ngIf="uploading"></mat-progress-bar>
+  <mat-card class="has-text-centered">
+    <br>
+    <div class="field" *ngIf="!tempImg">
+      <div class="file is-medium is-boxed">
+        <label class="file-label" style="width: 100%;">
+          <input class="file-input" (change)="getfile($event)" type="file" name="resume"
+            accept="image/x-png,image/gif,image/jpeg">
+          <span class="file-cta">
+            <span class="file-icon">
+              <mat-icon>add_photo_alternate</mat-icon>
+            </span>
+            <span class="file-label">
+              What you want to share?
+            </span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class=" has-text-centered">
+      <div *ngIf="tempImg">
+        <img class="card-img" mat-card-image src="{{ tempImg}}">
+        <input class="file-input" (change)="getfile($event)" type="file" name="resume"
+          accept="image/x-png,image/gif,image/jpeg">
+      </div>
+
+    </div>
+    <textarea class="textarea" [(ngModel)]="caption" rows="3" placeholder="Caption"></textarea>
+    <br>
+    <button color="primary" (click)="post()" mat-raised-button>POST &nbsp;&nbsp;
+      <mat-icon>send</mat-icon>
+    </button>
+  </mat-card>
+</div>

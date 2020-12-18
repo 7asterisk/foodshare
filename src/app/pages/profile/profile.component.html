@@ -1,0 +1,129 @@
+<div class="container">
+  <div class="column is-6 is-offset-3 has-text-centered">
+    <mat-card *ngIf="userData">
+
+      <button mat-mini-fab color="primary" *ngIf="!edit" (click)="edit=true" class="edit-button">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-mini-fab color="primary" *ngIf="edit" (click)="saveData()" class="edit-button">
+        <mat-icon>save</mat-icon>
+      </button>
+
+      <div *ngIf="!edit">
+        <figure class="image is-128x128" style="display: inline-flex;">
+          <img class="is-rounded" src="{{userData.picture}}">
+        </figure>
+
+        <div>
+          <div class="table-container">
+            <table class="table is-fullwidth">
+              <tr>
+                <td>name:</td>
+                <td>{{userData.name}}</td>
+              </tr>
+              <tr>
+                <td>bio:</td>
+                <td>{{userData.bio}}</td>
+              </tr>
+
+              <tr>
+                <td>email:</td>
+                <td>{{userData.email}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="edit">
+
+        <figure *ngIf="!uploading" class="image is-128x128" style="display: inline-flex;">
+          <img class="is-rounded" src="{{userData.picture}}">
+          <div class="upload-picture">
+            <input class="file-input" type="file" name="resume" (change)="uploadPhoto($event)"
+              accept="image/x-png,image/gif,image/jpeg">
+            <mat-icon>add_photo_alternate</mat-icon>
+          </div>
+        </figure>
+        <figure *ngIf="uploading" class="image is-128x128" style="display: inline-flex;">
+          <mat-spinner></mat-spinner>
+        </figure>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <mat-icon matSuffix>tag_faces</mat-icon>
+            <input type="text" [(ngModel)]="userData.name" name="name" matInput placeholder="your name">
+          </mat-form-field>
+        </form>
+
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <mat-label>Bio</mat-label>
+            <mat-icon matSuffix>insert_comment</mat-icon>
+            <input type="text" [(ngModel)]="userData.bio" name="bio" matInput placeholder="bio">
+          </mat-form-field>
+        </form>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <mat-icon matSuffix>mail</mat-icon>
+            <input type="text" [(ngModel)]="userData.email" disabled name="email" matInput placeholder="your name">
+          </mat-form-field>
+        </form>
+
+      </div>
+      <br><br>
+      <button mat-raised-button (click)="logout()">LogOut</button>
+    </mat-card>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="colums">
+    <div *ngFor="let post of posts" class="column is-4 is-offset-4">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image" style="background-image: url({{post.posterPic}})"> </div>
+          <mat-card-title>{{post.posterName}}</mat-card-title>
+          <mat-card-subtitle>{{calculateTime(post.time)}}</mat-card-subtitle>
+        </mat-card-header>
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="deletPost(post.time)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+          <!-- <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+          </button> -->
+        </mat-menu>
+        <div class=" has-text-centered">
+          <img class="card-img" mat-card-image src="{{post.img}}">
+        </div>
+        <mat-card-content>
+          <p>{{post.caption}} </p>
+        </mat-card-content>
+        <p *ngIf="gotliks && NoOfLikes(post.time)>0  "> loved by {{NoOfLikes(post.time)}} others</p>
+        <mat-card-actions>
+          <button (click)="likeIt(post.time)" style="font-size: large;" (click)="likeIt(post.time)" mat-icon-button
+            color="warn">
+            <span *ngIf="isLiked(post.time)">😋</span>
+            <span *ngIf="!isLiked(post.time)">😶</span>
+          </button>
+          <button mat-icon-button [routerLink]="[ '/comment',post.time]">
+            <mat-icon>chat_bubble_outline</mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon>share</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
+  </div>
+</div>

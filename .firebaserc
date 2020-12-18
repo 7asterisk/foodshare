@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dataqubez": {
+      "hosting": {
+        "foodshare": [
+          "dataqubez"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "foodbook-f86b7"
+  }
+}

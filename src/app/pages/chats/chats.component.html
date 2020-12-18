@@ -1,0 +1,15 @@
+<mat-list>
+  <!-- <div mat-subheader>Notes</div> -->
+  <div *ngFor="let user of users">
+    <mat-list-item *ngIf="uid!=user.uid">
+      <div mat-line style="display: inline-flex;align-items: center;">
+        <figure class="image is-48x48">
+          <img class="is-rounded" src="{{user.picture}}">
+        </figure>
+        <p class="has-text-weight-bold mat-list-text" (click)="goToInbox(user.uid)"> &nbsp;&nbsp;
+          {{user.name}} </p>
+        <p *ngIf="isNewMsg[user?.uid]"> <span class=badge> 1 </span> </p>
+      </div>
+    </mat-list-item>
+  </div>
+</mat-list>

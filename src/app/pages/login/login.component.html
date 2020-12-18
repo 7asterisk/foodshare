@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="column has-text-centered">
+    <mat-card>
+      <mat-tab-group mat-stretch-tabs *ngIf="!forgetTab">
+        <mat-tab label="Login">
+
+          <br>
+          <button mat-raised-button (click)="loginWithGoogle()"> <img width="20px"
+              src="../../../assets/google-brands.svg" alt=""> &nbsp; Login With
+            Google</button>
+          <br>
+          <hr class="hr-text" data-content="OR">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email Id</mat-label>
+            <input matInput type="email" [(ngModel)]="email" placeholder="eg: abc@xyz.com">
+            <mat-icon matSuffix>mail</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" [(ngModel)]="pass" placeholder="you cool password">
+            <mat-icon matSuffix>lock</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+          <br>
+          <button mat-raised-button (click)="loginWithEmail(email,pass)" color="accent">Login</button>
+          <br>
+          <br>
+          <button mat-button color="primary" (click)="openForgetTab(true)">Forget Password 😅</button>
+          <br>
+        </mat-tab>
+        <mat-tab label="SingUp">
+
+
+          <br>
+          <button mat-raised-button (click)="loginWithGoogle()"> <img width="20px"
+              src="../../../assets/google-brands.svg" alt=""> &nbsp; singup
+            With
+            Google</button>
+          <br>
+          <hr class="hr-text" data-content="OR">
+          <div class="">
+            <button mat-button>
+              <input class="file-input" type="file" name="resume" (change)="getfile($event)"
+                accept="image/x-png,image/gif,image/jpeg">
+              <mat-icon>cloud_upload </mat-icon> Upload Profile Pic.
+            </button>
+          </div>
+          <br>
+          <mat-form-field appearance="outline">
+            <mat-label>Your name</mat-label>
+            <input matInput [(ngModel)]="name" type="text" placeholder="eg: name">
+            <mat-icon matSuffix>mood</mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email Id</mat-label>
+            <input matInput [(ngModel)]="email" type="email" placeholder="eg: abc@xyz.com">
+            <mat-icon matSuffix>mail</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" [(ngModel)]="pass" matInput placeholder="you cool password">
+            <mat-icon matSuffix>lock</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Re-Enter Password</mat-label>
+            <input type="password" [(ngModel)]="repass" matInput placeholder="you cool password">
+            <mat-icon matSuffix>lock</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="accent" (click)="singup(pass,repass)">SingUp</button>
+          <br><br>
+
+
+        </mat-tab>
+      </mat-tab-group>
+      <div *ngIf="forgetTab">
+        <p>Reset Password Link Will Be Sent To Your Email</p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email Id</mat-label>
+          <input matInput type="email" [(ngModel)]="email" placeholder="eg: abc@xyz.com">
+          <mat-icon matSuffix>mail</mat-icon>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+        <br>
+        <button mat-raised-button (click)="resetPassword(email)" color="accent">Send Email</button>
+        <br>
+        <br>
+        <button mat-button color="primary" (click)="openForgetTab(false)">GO Back 😁</button>
+        <br>
+
+      </div>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+.navbar {
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.level-item {
+  width: 100%;
+  display: contents;
+}
+
+mat-icon {
+  font-size: x-large;
+}
+
+.example-icon {
+  margin-top: 6px;
+}
+
+mat-toolbar {
+  background: linear-gradient(65deg, #5E52F6 0, #8B82F9 100%);
+  box-shadow: 0 8px 16px rgba(255, 77, 121, .25);
+  color: #fff;
+  // background: linear-gradient(65deg, #FF4D79 0, #FF809F 100%);
+}
