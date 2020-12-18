@@ -1,5 +1,8 @@
 # Foodshare
 Foodshare is a social media progressive web app.
+![Hexadigi foodshare](https://github.com/7asterisk/foodshare/blob/main/pic1.png)
+
+![Hexadigi foodshare](https://github.com/7asterisk/foodshare/blob/main/pic2.png)
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
